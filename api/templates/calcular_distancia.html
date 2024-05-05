@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Calcular distancia{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <h1>Calcular distancia entre dos lugares</h1>
+    <p>Obtén la distancia exacta entre tu ubicación y cualquier lugar que elijas en la aplicación.</p>
+    {% if message and message != None%}
+        {% include 'alerta.html' %}
+    {% endif %}
+    <form action="/calcular_distancia" method="GET">
+        <h4>Ingresa las coordenadas de tu ubicación</h4>
+        {% include 'ubicacion_form.html' %}
+        <br>
+        <h4>Selecciona un lugar para calcular la distancia</h4>
+        <div class="form-group">
+            <label for="place">Lugar</label>
+            <select class="form-control" id="place" name="place">
+                {% for group, places in all_places.items() %}
+                <optgroup label="{{ group }}">
+                    {% for place in places %}
+                    {% if place == selected_place %}
+                    <option value="{{ place }}|{{ group }}" selected>{{ place }}</option>
+                    {% else %}
+                    <option value="{{ place }}|{{ group }}">{{ place }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </optgroup>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        {% set button_text = 'Calcular' %}
+        {% include 'botones.html' %}
+    </form>
+    <br>
+    <div id="results"></div>
+    <br>
+    <br>
+</div>
+{% endblock %}
+

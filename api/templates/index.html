@@ -1,0 +1,48 @@
+
+{%extends 'base.html'%}
+{%block title%}Aplicación de Lugares{%endblock%}
+{%block content%}
+<div class="container-fluid">
+    <main class="container my-5">
+        <section class="hero">
+            <h1 class="display-4">Bienvenido a la Aplicación de Lugares</h1>
+            <p class="lead">Explora y gestiona tus lugares favoritos con facilidad.</p>
+        </section>
+
+        <section class="features">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header">Cargar Lugar</div>
+                        <div class="card-body">
+                            <p>Registra nuevos lugares con información detallada.</p>
+                            <a href="/cargar_lugar" class="btn btn-primary">Ir a Cargar Lugar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header">Lugares a Menos de 5 Km</div>
+                        <div class="card-body">
+                            <p>Encuentra los lugares cercanos a tu ubicación actual.</p>
+                            <a href="/lugares_cerca" class="btn btn-primary">Ir a Lugares Cerca</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header">Distancia Entre dos Lugares</div>
+                        <div class="card-body">
+                            <p>Calcula la distancia entre dos puntos específicos.</p>
+                            <a href="/calcular_distancia" class="btn btn-primary">Ir a Calcular Distancia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+</div>
+
+{% endblock %}
+    

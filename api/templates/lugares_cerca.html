@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%block title%}Mostrar lugares cerca{%endblock%}
+{%block content%}
+  <div class="container-fluid mt-3 mb-5">
+    <h1>Lugares en un radio de 5 km</h1>
+    <p>Explora los lugares cercanos a tu ubicación actual.</p>
+    {% if message and message != None%}
+        {% include 'alerta.html' %}
+    {% endif %}
+    <form action="/lugares_cerca" method="GET">
+      <h4>Ingresa las coordenadas de tu ubicación</h4>
+        {% include 'ubicacion_form.html' %}
+        <br>
+        {% set button_text = 'Mostrar' %}
+        {% include 'botones.html' %}
+    </form>
+    
+    <div id="results"></div>
+    <br>
+    {% if places %}
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Grupo de interés</th>
+              <th>Nombre</th>
+              <th>Latitud</th>
+              <th>Longitud</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% set last_group = None %}
+            {% for place in places %}
+              {% if place.grupo != last_group %}
+                  <tr>
+                      <td rowspan="{{ place.group_span }}">{{ place.grupo }}</td>
+                      <td>{{ place.nombre }}</td>
+                      <td>{{ place.latitud }}</td>
+                      <td>{{ place.longitud }}</td>
+                  </tr>
+                  {% set last_group = place.grupo %}
+              {% else %}
+                  <tr>
+                      <td>{{ place.nombre }}</td>
+                      <td>{{ place.latitud }}</td>
+                      <td>{{ place.longitud }}</td>
+                  </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+  </div>
+  <br>
+{%endblock%}

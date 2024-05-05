@@ -1,0 +1,27 @@
+# Ignore virtual environment
+.venv
+venv/
+env/
+
+# Ignore compiled python files
+*.pyc
+__pycache__/
+
+# Ignore Redis data
+dump.rdb
+appendonly.aof
+
+# Ignore logs
+logs/*
+
+# Ignore test coverage reports
+.coverage
+htmlcov/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore local configuration files
+.env
+.flaskenv

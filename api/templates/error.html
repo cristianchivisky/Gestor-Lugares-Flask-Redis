@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Error{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>{{ error }}</h1>
+            <button type="button" onclick="javascript:history.back()" class="btn btn-link float-start ms-5">Volver atrás</button>
+        </div>
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='img/404.jpg') }}" alt="imagen de error" class="img-fluid max-width: 100% height: auto img-thumbnail">
+        </div>
+    </div>
+{% endblock %}
